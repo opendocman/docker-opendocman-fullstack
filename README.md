@@ -10,9 +10,13 @@ Requires a functional MySQL database/username/password.
 
 `docker build --tag="opendocman-minimal" .`
 
-###To Run:
+###To Run Live:
 
-`docker run -d -p 8080:80 -v ~/odm_data:/var/www/odm_data opendocman`
+`docker run -d -v /odm_data:/var/www/odm_data opendocman-minimal`
+
+###To Run Local (development):
+
+`docker run -d -p 8080:80 -v ~/odm_data:/var/www/odm_data opendocman-minimal`
 
 You should then have a running instance and if you visit your container URL you 
 will be prompted to run through the OpenDocMan installer.
