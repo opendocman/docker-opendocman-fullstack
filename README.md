@@ -1,4 +1,7 @@
 #Docker OpenDocMan Minimal without MySQL
+If you are looking for a pre-build docker image look here:
+
+[Docker Hub Site for OpenDocMan](https://registry.hub.docker.com/u/stephenlawrence/opendocman-www/)
 
 This repo contains the files needed to build a docker image running
 the latest version of OpenDocMan along with Apache 2 and PHP.
