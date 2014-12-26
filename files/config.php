@@ -38,7 +38,7 @@ define('DB_PASS', getenv('DB_PASS'));
 /** MySQL hostname */
 /* The MySQL server. It can also include a port number. e.g. "hostname:port" or a path to a 
  * local socket e.g. ":/path/to/socket" for the localhost.  */
-define('DB_HOST', getenv('DB_1_PORT_3306_TCP_ADDR').":".getenv('DB_1_PORT_3306_TCP_PORT'));
+define('DB_HOST', getenv('DB_1_HOST').":".getenv('DB_1_PORT'));
 
 /**
  * Prefix to append to each table name in the database (ex. odm_ would make the tables
