@@ -1,8 +1,8 @@
 web:
   build: .
   environment:
-    DB_USER: root
-    DB_PASS: rootpass
+    DB_USER: opendocman
+    DB_PASS: opendocman
     DB_HOST: db
     DB_NAME: opendocman
     DB_1_HOST: db
@@ -17,13 +17,14 @@ file:
   image: busybox
   volumes:
     - /var/www/html/
+    - /var/www/odm_data/
     - /var/lib/mysql/
 db:
-  image: mysql
+  image: mysql:5.5
   volumes_from:
     - file
   environment:
     MYSQL_DATABASE: opendocman
-    MYSQL_USER: root
-    MYSQL_ROOT: root
+    MYSQL_USER: opendocman
+    MYSQL_PASSWORD: opendocman
     MYSQL_ROOT_PASSWORD:  rootpass
