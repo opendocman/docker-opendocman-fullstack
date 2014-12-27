@@ -18,16 +18,17 @@
 #Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 
-# Fix up permissions and other stuff
-chown -R apache:apache /var/www/html && chown -R apache:apache /var/www/document_repository && chmod 777 /var/www/html/templates_c
-touch  /var/log/php_errors.log && chown apache:apache  /var/log/php_errors.log
-
 # Lets get the code and the config in there if its missing
 if [ ! -f /var/www/html/config.php ]
 then
 	git clone https://github.com/opendocman/opendocman.git --branch master /var/www/html
+	rm -rf /var/www/html/install
 	mv /config.php /var/www/html/
 fi
+
+# Fix up permissions and other stuff
+chown -R apache:apache /var/www/html && chown -R apache:apache /var/www/document_repository && chmod 777 /var/www/html/templates_c
+touch  /var/log/php_errors.log && chown apache:apache  /var/log/php_errors.log
 
 TABLES_EXIST=$(mysql -u$DB_USER -p$DB_PASS -h$DB_HOST -P$DB_PORT $DB_NAME -e "SHOW TABLES LIKE 'odm_settings'" | grep "odm_settings" > /dev/null; echo "$?")
 
