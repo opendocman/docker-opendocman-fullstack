@@ -1,18 +1,15 @@
-FROM php:5.4-apache
+FROM centos:centos6 
 MAINTAINER <Stephen Lawrence>
 
-# Install packages
-RUN apt-get update && \
-apt-get install -y apt-utils php5-mysql git
-
-# PHP prod config
-ADD files/php.ini  /usr/local/etc/php/
-ADD files/config.php /config.php
-ADD files/web-startup.sh /web-startup.sh
-
-RUN chmod 700 /web-startup.sh
+RUN yum install -y git httpd php php-pdo php-mysql mysql
+RUN yum update -y
 
 EXPOSE 80
 
-# By default, simply start apache.
+ADD files/config.php /config.php
+ADD files/web-startup.sh /web-startup.sh
+ADD files/opendocman.ini  /etc/php.d/
+
+RUN chmod 700 /web-startup.sh
+
 CMD ["/web-startup.sh"]

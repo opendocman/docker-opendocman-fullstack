@@ -4,20 +4,19 @@ web:
     DB_USER: opendocman
     DB_PASS: opendocman
     DB_HOST: db
+    DB_PORT: 3306
     DB_NAME: opendocman
-    DB_1_HOST: db
-    DB_1_PORT: 3306
   links:
     - db
   ports:
-    - "80"
+    - "80:80"
   volumes_from:
     - file
 file:
   image: busybox
   volumes:
     - /var/www/html/
-    - /var/www/odm_data/
+    - /var/www/document_repository//
     - /var/lib/mysql/
 db:
   image: mysql:5.5

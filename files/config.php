@@ -1,7 +1,7 @@
 <?php
 /*
 config.php - OpenDocMan database config file for Docker
-Copyright (C) 2014 Stephen Lawrence Jr.
+Copyright (C) 2002-2015 Stephen Lawrence Jr.
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -38,7 +38,8 @@ define('DB_PASS', getenv('DB_PASS'));
 /** MySQL hostname */
 /* The MySQL server. It can also include a port number. e.g. "hostname:port" or a path to a 
  * local socket e.g. ":/path/to/socket" for the localhost.  */
-define('DB_HOST', getenv('DB_1_HOST').":".getenv('DB_1_PORT'));
+define('DB_HOST', getenv('DB_1_HOST'));
+define('DB_HOST', getenv('DB_1_PORT'));
 
 /**
  * Prefix to append to each table name in the database (ex. odm_ would make the tables
