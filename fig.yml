@@ -1,0 +1,29 @@
+web:
+  build: .
+  environment:
+    DB_USER: opendocman
+    DB_PASS: opendocman
+    DB_HOST: db
+    DB_PORT: 3306
+    DB_NAME: opendocman
+  links:
+    - db
+  ports:
+    - "80:80"
+  volumes_from:
+    - file
+file:
+  image: busybox
+  volumes:
+    - /var/www/html/
+    - /var/www/document_repository//
+    - /var/lib/mysql/
+db:
+  image: mysql:5.5
+  volumes_from:
+    - file
+  environment:
+    MYSQL_DATABASE: opendocman
+    MYSQL_USER: opendocman
+    MYSQL_PASSWORD: opendocman
+    MYSQL_ROOT_PASSWORD:  rootpass
